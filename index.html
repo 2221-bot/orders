@@ -1,53 +1,359 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#dfe7f1">
-  <title>Заказы</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Информация о получении</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #17202a;
+            background:
+                radial-gradient(circle at 15% 10%, rgba(82, 126, 168, 0.13), transparent 28%),
+                radial-gradient(circle at 90% 85%, rgba(62, 95, 130, 0.09), transparent 30%),
+                #e9edf1;
+        }
+
+        .qev {
+            width: min(660px, calc(100% - 28px));
+            margin: 42px auto;
+        }
+
+        .nuk {
+            overflow: hidden;
+            border: 1px solid #c5ced7;
+            border-radius: 13px;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow:
+                0 18px 45px rgba(34, 48, 61, 0.11),
+                0 2px 6px rgba(34, 48, 61, 0.05);
+        }
+
+        .zaf {
+            height: 7px;
+            background: linear-gradient(
+                90deg,
+                #315c82 0%,
+                #315c82 31%,
+                #7694ad 31%,
+                #7694ad 63%,
+                #b7c6d2 63%,
+                #b7c6d2 100%
+            );
+        }
+
+        .ruh {
+            padding: 28px 30px 12px;
+        }
+
+        .gip {
+            margin: 0 0 7px;
+            color: #7b8792;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+        }
+
+        .vot {
+            display: block;
+            margin-bottom: 26px;
+            color: #17202a;
+            font-size: clamp(25px, 6vw, 37px);
+            font-weight: 700;
+            line-height: 1.1;
+            text-decoration: none;
+        }
+
+        .vot:hover {
+            color: #315c82;
+        }
+
+        .lek {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 17px 18px;
+            border: 1px solid #d4dbe1;
+            border-radius: 9px;
+            background: #f5f7f9;
+        }
+
+        .pux {
+            display: grid;
+            flex: 0 0 37px;
+            width: 37px;
+            height: 37px;
+            place-items: center;
+            border-radius: 50%;
+            background: #315c82;
+            color: white;
+            font-size: 17px;
+        }
+
+        .baj {
+            min-width: 0;
+        }
+
+        .baj .gip {
+            margin-bottom: 4px;
+        }
+
+        .wus {
+            margin: 0;
+            color: #263441;
+            font-size: 16px;
+            line-height: 1.55;
+        }
+
+        .wus a {
+            color: inherit;
+            text-decoration-color: #8ea4b7;
+            text-underline-offset: 3px;
+        }
+
+        .wus a:hover {
+            color: #315c82;
+        }
+
+        .hox {
+            padding: 25px 30px 31px;
+        }
+
+        .xam {
+            margin: 0 0 14px;
+            color: #65727d;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        .kiv {
+            display: grid;
+            gap: 9px;
+        }
+
+        .jid {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 67px;
+            gap: 18px;
+            padding: 13px 17px 13px 20px;
+            overflow: hidden;
+            border: 1px solid #d7dde2;
+            border-radius: 8px;
+            background: #ffffff;
+            transition:
+                transform 160ms ease,
+                border-color 160ms ease,
+                box-shadow 160ms ease;
+        }
+
+        .jid::before {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 4px;
+            content: "";
+            background: #6385a3;
+        }
+
+        .jid:hover {
+            transform: translateX(3px);
+            border-color: #aebdca;
+            box-shadow: 0 7px 16px rgba(43, 62, 78, 0.08);
+        }
+
+        .mec {
+            min-width: 0;
+        }
+
+        .mec small {
+            display: block;
+            margin-bottom: 4px;
+            color: #8a949d;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.9px;
+            text-transform: uppercase;
+        }
+
+        .mec strong {
+            color: #2b3741;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .yor {
+            flex: 0 0 auto;
+            padding: 8px 11px;
+            border: 1px solid #c8d1d8;
+            border-radius: 6px;
+            background: #edf2f5;
+            color: #1f3548;
+            font-family: "Courier New", monospace;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1.7px;
+            white-space: nowrap;
+        }
+
+        .taz {
+            padding: 15px 30px;
+            border-top: 1px solid #d7dde2;
+            background: #f4f6f8;
+            color: #85909a;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        @media (max-width: 560px) {
+            .qev {
+                width: min(100% - 18px, 660px);
+                margin: 18px auto;
+            }
+
+            .ruh {
+                padding: 23px 20px 10px;
+            }
+
+            .hox {
+                padding: 22px 20px 24px;
+            }
+
+            .lek {
+                padding: 15px;
+            }
+
+            .jid {
+                min-height: 72px;
+                padding: 13px 12px 13px 17px;
+            }
+
+            .yor {
+                font-size: 16px;
+                letter-spacing: 1.2px;
+            }
+
+            .taz {
+                padding-right: 18px;
+                padding-left: 18px;
+            }
+        }
+
+        @media (max-width: 390px) {
+            .jid {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .yor {
+                align-self: stretch;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <main class="n7q-wrap">
-    <section class="v2m-panel">
-      <div class="x8r-row x8r-row--top">
-        <p class="k4d-tag">Номер получателя</p>
-        <p class="p6z-phone">+48 511 390 585</p>
-      </div>
+    <main class="qev">
+        <section class="nuk">
+            <div class="zaf"></div>
 
-      <div class="x8r-row">
-        <p class="k4d-tag">Адрес</p>
-        <a class="a3y-place" href="https://maps.app.goo.gl/orphZAd7pi3zVJhC6?g_st=ac" target="_blank" rel="noopener noreferrer">
-          <span>Paczkomat InPost MAR06M</span>
-          <small>Sowińskiego 26, 05-260 Marki</small>
-        </a>
-      </div>
+            <div class="ruh">
+                <p class="gip">Номер получателя</p>
 
-      <div class="j9c-stack">
-        <p class="k4d-tag k4d-tag--orders">Заказы</p>
+                <a class="vot" href="tel:+48511390585">
+                    +48 511 390 585
+                </a>
 
-        <div class="u5h-item">
-          <span class="e1f-name">Заказ 1</span>
-          <strong class="r8w-code">296 232</strong>
-        </div>
-        <div class="u5h-item">
-          <span class="e1f-name">Заказ 2</span>
-          <strong class="r8w-code">201 547</strong>
-        </div>
-        <div class="u5h-item">
-          <span class="e1f-name">Заказ 3</span>
-          <strong class="r8w-code">352 000</strong>
-        </div>
-        <div class="u5h-item">
-          <span class="e1f-name">Заказ 4</span>
-          <strong class="r8w-code">989 102</strong>
-        </div>
-        <div class="u5h-item">
-          <span class="e1f-name">Заказ 5</span>
-          <strong class="r8w-code">368 403</strong>
-        </div>
-      </div>
-    </section>
-  </main>
+                <div class="lek">
+                    <div class="pux">⌖</div>
+
+                    <div class="baj">
+                        <p class="gip">Адрес получения</p>
+
+                        <p class="wus">
+                            <a
+                                href="https://maps.app.goo.gl/orphZAd7pi3zVJhC6?g_st=ac"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Sowińskiego 26, 05-260 Marki
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hox">
+                <p class="xam">Заказы</p>
+
+                <div class="kiv">
+                    <article class="jid">
+                        <div class="mec">
+                            <small>Заказ 01</small>
+                            <strong>Код получения</strong>
+                        </div>
+
+                        <div class="yor">296 232</div>
+                    </article>
+
+                    <article class="jid">
+                        <div class="mec">
+                            <small>Заказ 02</small>
+                            <strong>Код получения</strong>
+                        </div>
+
+                        <div class="yor">201 547</div>
+                    </article>
+
+                    <article class="jid">
+                        <div class="mec">
+                            <small>Заказ 03</small>
+                            <strong>Код получения</strong>
+                        </div>
+
+                        <div class="yor">352 000</div>
+                    </article>
+
+                    <article class="jid">
+                        <div class="mec">
+                            <small>Заказ 04</small>
+                            <strong>Код получения</strong>
+                        </div>
+
+                        <div class="yor">989 102</div>
+                    </article>
+
+                    <article class="jid">
+                        <div class="mec">
+                            <small>Заказ 05</small>
+                            <strong>Код получения</strong>
+                        </div>
+
+                        <div class="yor">368 403</div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="taz">
+                Информация для получения заказов
+            </div>
+        </section>
+    </main>
 </body>
 </html>
